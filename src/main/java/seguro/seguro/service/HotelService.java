@@ -1,11 +1,12 @@
 package com.example.hotelreservas.service;
 
-import com.example.hotelreservas.exception.ResourceNotFoundException;
 import com.example.hotelreservas.model.Hotel;
 import com.example.hotelreservas.repository.HotelRepository;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 @RequiredArgsConstructor
@@ -19,7 +20,8 @@ public class HotelService {
 
     public Hotel getById(Integer id) {
         return hotelRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Hotel con id " + id + " no existe"));
+            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+                "Hotel con id " + id + " no existe"));
     }
 
     public Hotel create(Hotel hotel) {
