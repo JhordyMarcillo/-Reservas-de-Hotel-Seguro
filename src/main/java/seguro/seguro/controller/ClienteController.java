@@ -1,7 +1,7 @@
 package seguro.seguro.controller;
 
-import seguro.seguro.model.Hotel;
-import seguro.seguro.service.HotelService;
+import seguro.seguro.model.Cliente;
+import seguro.seguro.service.ClienteService;
 import jakarta.validation.Valid;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -16,29 +16,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/hoteles")
+@RequestMapping("/api/clientes")
 @RequiredArgsConstructor
-public class HotelController {
+public class ClienteController {
 
-    private final HotelService hotelService;
+    private final ClienteService clienteService;
 
     @GetMapping
-    public List<Hotel> getAll() {
-        return hotelService.getAll();
+    public List<Cliente> getAll() {
+        return clienteService.getAll();
     }
 
     @GetMapping("/{id}")
-    public Hotel getById(@PathVariable Integer id) {
-        return hotelService.getById(id);
+    public Cliente getById(@PathVariable Long id) {
+        return clienteService.getById(id);
     }
 
     @PostMapping
-    public ResponseEntity<Hotel> create(@Valid @RequestBody Hotel hotel) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(hotelService.create(hotel));
+    public ResponseEntity<Cliente> create(@Valid @RequestBody Cliente cliente) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(clienteService.create(cliente));
     }
 
     @PutMapping("/{id}")
-    public Hotel update(@PathVariable Integer id, @Valid @RequestBody Hotel hotel) {
-        return hotelService.update(id, hotel);
+    public Cliente update(@PathVariable Long id, @Valid @RequestBody Cliente cliente) {
+        return clienteService.update(id, cliente);
     }
 }

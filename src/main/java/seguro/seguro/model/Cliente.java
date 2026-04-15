@@ -7,30 +7,26 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "hoteles")
+@Table(name = "clientes")
 @Getter
 @Setter
-public class Hotel {
+public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @NotBlank
     @Column(nullable = false, length = 100)
     private String nombre;
 
     @NotBlank
-    @Column(nullable = false, length = 255)
-    private String direccion;
-
-    @NotNull
-    private Integer estrellas;
+    @Column(nullable = false, unique = true, length = 100)
+    private String email;
 
     @Column(length = 20)
     private String telefono;

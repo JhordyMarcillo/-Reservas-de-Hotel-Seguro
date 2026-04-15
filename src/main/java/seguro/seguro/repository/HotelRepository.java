@@ -1,6 +1,7 @@
-package com.example.hotelreservas.repository;
+package seguro.seguro.repository;
 
-import com.example.hotelreservas.model.Hotel;
+
+import seguro.seguro.model.Hotel;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface HotelRepository extends JpaRepository<Hotel, Integer> {

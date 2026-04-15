@@ -1,7 +1,8 @@
-package com.example.hotelreservas.service;
+package seguro.seguro.service;
 
-import com.example.hotelreservas.model.Hotel;
-import com.example.hotelreservas.repository.HotelRepository;
+
+import seguro.seguro.model.Hotel;
+import seguro.seguro.repository.HotelRepository;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
