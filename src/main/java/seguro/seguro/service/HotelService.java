@@ -4,16 +4,18 @@ package seguro.seguro.service;
 import seguro.seguro.model.Hotel;
 import seguro.seguro.repository.HotelRepository;
 import java.util.List;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 @Service
-@RequiredArgsConstructor
 public class HotelService {
 
     private final HotelRepository hotelRepository;
+
+    public HotelService(HotelRepository hotelRepository) {
+        this.hotelRepository = hotelRepository;
+    }
 
     public List<Hotel> getAll() {
         return hotelRepository.findAll();

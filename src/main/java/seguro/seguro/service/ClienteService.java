@@ -3,16 +3,18 @@ package seguro.seguro.service;
 import seguro.seguro.model.Cliente;
 import seguro.seguro.repository.ClienteRepository;
 import java.util.List;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 @Service
-@RequiredArgsConstructor
 public class ClienteService {
 
     private final ClienteRepository clienteRepository;
+
+    public ClienteService(ClienteRepository clienteRepository) {
+        this.clienteRepository = clienteRepository;
+    }
 
     public List<Cliente> getAll() {
         return clienteRepository.findAll();
@@ -29,7 +31,7 @@ public class ClienteService {
     }
 
     public Cliente update(Long id, Cliente request) {
-        Cliente cliente = getById(id); // Reutiliza el método para validar si existe
+        Cliente cliente = getById(id);
         cliente.setNombre(request.getNombre());
         cliente.setEmail(request.getEmail());
         cliente.setTelefono(request.getTelefono());
